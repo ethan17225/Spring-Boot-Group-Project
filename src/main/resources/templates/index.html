@@ -3,9 +3,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Books</title>
+        
+        <style>
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        </style>
     </head>
     
     <body>
+        <h2>Book Reviews</h2>
         
+        <ol>
+            <li th:each="b : ${books}">
+                <a th:text="${b.title} + '(Review)'"></a>
+            </li>
+        </ol>
+        
+        <button>
+            <a th:href="@{/addBook}">Add book</a>
+        </button>
+        
+        <div id='review'>
+            
+        </div>
+        
+        <script>
+            let review = document.getElementById("review");
+        </script>
     </body>
 </html>

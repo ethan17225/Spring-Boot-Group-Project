@@ -12,3 +12,5 @@ INSERT INTO BOOK (title, authors) VALUES
     ('Frankenstein', 'Mary Shelley'),
     ('Inferno', 'Dante Alighieri'),
     ('Dracula', 'Bram Stoker');
+
+
