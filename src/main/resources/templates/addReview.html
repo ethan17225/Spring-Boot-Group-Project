@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+            <title>Add Review</title>
+    </head>
+    <body>
+        <h1>Add Review</h1>
+        <form th:action="@{'/addReview/' + ${bookId}}" method="POST">
+            <label for="review">Review: </label>
+            <input id="review" input="text" name="review">
+                <br>
+                <input type="submit" value="Save">
+                    </form>
+                    </body>
+                    </html>
