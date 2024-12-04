@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Add Review</h1>
+<form th:action="@{/addReview}" method="GET" th:object="${review}">
+<label for="name">Review: </label>
+<input input="text" name="review" th:field="*{review}">
+<input type="submit" value="Save">
+</form>
+</body>
+</html>
