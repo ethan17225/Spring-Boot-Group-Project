@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -46,16 +48,20 @@ public class BookController {
         return "redirect:/";
     }
     
-    @RequestMapping("/newReview")
-    public String newReview(Model model) {
-        model.addAttribute("review", new Review());
+    @RequestMapping("/newReview/{bookId}")
+    public String newReview(Model model, @PathVariable int bookId) {
+        model.addAttribute("bookId", bookId);
         
-        return "addBook";
+        return "addReview";
     }
     
-    @RequestMapping("/addReview")
-    public String addReview(Model model, @ModelAttribute Review review){
-        reviewRepo.save(review);
+    @RequestMapping("/addReview/{bookId}")
+    public String addReview(Model model, @PathVariable int bookId, @RequestParam String review){
+        Review newReview = new Review();
+        newReview.setBookId(bookId);
+        newReview.setReview(review);
+        
+        reviewRepo.save(newReview);
         
         return "redirect:/";
     }

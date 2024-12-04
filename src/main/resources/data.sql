@@ -13,4 +13,9 @@ INSERT INTO BOOK (title, authors) VALUES
     ('Inferno', 'Dante Alighieri'),
     ('Dracula', 'Bram Stoker');
 
-
+INSERT INTO REVIEW (book_id, review) VALUES
+    (1, 'The book is great'),
+    (1, 'Excellent'),
+    (2, 'The most interesting book I have ever read'),
+    (2, 'Very nice book'),
+    (3, 'Must read!!!');

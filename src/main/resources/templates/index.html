@@ -17,12 +17,12 @@
         
         <ol>
             <li th:each="b : ${books}">
-                <a th:text="${b.title} + '(Review)'"></a>
+                <a th:text="${b.title} + ' (Review)'"></a>
             </li>
         </ol>
         
         <button>
-            <a th:href="@{/addBook}">Add book</a>
+            <a th:href="@{/newBook}">Add book</a>
         </button>
         
         <div id='review'>
