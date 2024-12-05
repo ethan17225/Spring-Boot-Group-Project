@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author theha
  */
 @Controller
-public class BookController {
+public class BookReviewController {
     @Autowired
     BookRepository bookRepo;
     

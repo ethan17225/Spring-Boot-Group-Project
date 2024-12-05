@@ -17,20 +17,60 @@
         
         <ol>
             <li th:each="b : ${books}">
-                <a th:text="${b.title} + ' (Review)'"></a>
+                <a href="#" th:onclick="'showBookReviews(' + ${b.id} + ')'" th:text="${b.title} + ' (Review)'"></a>
             </li>
         </ol>
         
         <button>
             <a th:href="@{/newBook}">Add book</a>
         </button>
-        
-        <div id='review'>
-            
-        </div>
+        <hr id="line" style='display: none;'></hr>
+        <div id='bookDetail'></div>
+        <div id='review'></div>
         
         <script>
-            let review = document.getElementById("review");
+            const review = document.getElementById("review");
+            const bookDetail = document.getElementById("bookDetail");
+            const hr = document.getElementById("line");
+            
+            function showBookDetail(book) {
+                let bookDetailTemplate = `
+                    <p>Title: ${book.title}</p>
+                    <p>Authors: ${book.authors}</p>
+                ` ;
+        
+                bookDetail.innerHTML = bookDetailTemplate;
+            }
+            
+            function getBookDetail(bookId){
+                fetch("http://localhost:8080/books/" + bookId)
+                        .then(data => data.json)
+                        .then(data => showBookDetail(data));
+            }
+            
+            function showReviews(reviews) {
+                let reviewTemplate = `<ul>`;
+                
+                for (const review of reviews){
+                    reviewTemplate += `<li>${review.review}</li>`;
+                }
+                
+                reviewTemplate += `<\ul>`;
+        
+                review.innerHTML = bookDetailTemplate;
+            }
+            
+            function getReviews(bookId){
+                fetch("http://localhost:8080/reviews/" + bookId)
+                        .then(data => data.json)
+                        .then(data => showReviews(data));
+            }
+            
+            function showBookReviews(bookId){
+                hr.style.display = "block";
+                getBookDetail(bookId);
+                getReviews(bookId);
+            }
         </script>
     </body>
 </html>
