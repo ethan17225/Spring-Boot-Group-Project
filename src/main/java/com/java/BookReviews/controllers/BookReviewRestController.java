@@ -28,7 +28,11 @@ public class BookReviewRestController {
     
     @GetMapping("/books/{bookId}")
     public Book getBook(@PathVariable int bookId){
-        return bookRepo.findById(bookId).get();
+        System.out.println("GEtting book "+bookId);
+        
+        Book book = bookRepo.findById(bookId).get();
+        System.out.println("Got book "+book);
+        return book;
     }
     
     @GetMapping("/reviews/{bookId}")

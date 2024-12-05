@@ -51,6 +51,7 @@ public class BookReviewController {
     @RequestMapping("/newReview/{bookId}")
     public String newReview(Model model, @PathVariable int bookId) {
         model.addAttribute("bookId", bookId);
+        model.addAttribute("book", bookRepo.findById(bookId).get());
         
         return "addReview";
     }

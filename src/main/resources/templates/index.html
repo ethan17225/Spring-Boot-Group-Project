@@ -5,9 +5,10 @@
         <title>Books</title>
         
         <style>
-            a {
-                text-decoration: none;
-                color: black;
+            .book:hover {
+                color: blue;
+                text-decoration: underline;
+                cursor: pointer;
             }
         </style>
     </head>
@@ -17,7 +18,8 @@
         
         <ol>
             <li th:each="b : ${books}">
-                <a href="#" th:onclick="'showBookReviews(' + ${b.id} + ')'" th:text="${b.title} + ' (Review)'"></a>
+                <a class="book" th:onclick="'showBookReviews(' + ${b.id} + ')'" th:text="${b.title} "></a>
+                <a th:href="@{'/newReview/' + ${b.id}}">(Review)</a>
             </li>
         </ol>
         
@@ -44,7 +46,7 @@
             
             function getBookDetail(bookId){
                 fetch("http://localhost:8080/books/" + bookId)
-                        .then(data => data.json)
+                        .then(data => data.json())
                         .then(data => showBookDetail(data));
             }
             
@@ -53,16 +55,14 @@
                 
                 for (const review of reviews){
                     reviewTemplate += `<li>${review.review}</li>`;
-                }
-                
-                reviewTemplate += `<\ul>`;
+                }                        
         
-                review.innerHTML = bookDetailTemplate;
+                review.innerHTML = reviewTemplate;
             }
             
             function getReviews(bookId){
                 fetch("http://localhost:8080/reviews/" + bookId)
-                        .then(data => data.json)
+                        .then(data => data.json())
                         .then(data => showReviews(data));
             }
             
