@@ -26,50 +26,77 @@
         <button>
             <a th:href="@{/newBook}">Add book</a>
         </button>
+        
         <hr id="line" style='display: none;'></hr>
         <div id='bookDetail'></div>
         <div id='review'></div>
         
         <script>
-            const review = document.getElementById("review");
-            const bookDetail = document.getElementById("bookDetail");
-            const hr = document.getElementById("line");
-            
+            // Get DOM elements to display reviews and book details
+            const review = document.getElementById("review"); // Element to display reviews
+            const bookDetail = document.getElementById("bookDetail"); // Element to display book details
+            const hr = document.getElementById("line"); // Horizontal line to separate content
+
+            /**
+             * Displays book details (title and authors) on the page.
+             * 
+             * @param {Object} book - The book object containing the title and authors.
+             */
             function showBookDetail(book) {
                 let bookDetailTemplate = `
-                    <p>Title: ${book.title}</p>
+                    <p>Title: ${book.title}</p> 
                     <p>Authors: ${book.authors}</p>
-                ` ;
-        
-                bookDetail.innerHTML = bookDetailTemplate;
+                `;
+                bookDetail.innerHTML = bookDetailTemplate; // Insert the book details into the bookDetail element
             }
-            
+
+            /**
+             * Fetches and displays details of a specific book by its ID.
+             * 
+             * @param {number} bookId - The ID of the book to fetch.
+             */
             function getBookDetail(bookId){
-                fetch("http://localhost:8080/books/" + bookId)
-                        .then(data => data.json())
-                        .then(data => showBookDetail(data));
+                fetch("http://localhost:8080/books/" + bookId) // Make a request to the backend to fetch book details
+                    .then(data => data.json()) // Parse the response to JSON
+                    .then(data => showBookDetail(data)); // Pass the book data to the showBookDetail function
             }
-            
+
+            /**
+             * Displays the list of reviews for a specific book.
+             * 
+             * @param {Array} reviews - The list of reviews to display.
+             */
             function showReviews(reviews) {
-                let reviewTemplate = `<ul>`;
-                
-                for (const review of reviews){
-                    reviewTemplate += `<li>${review.review}</li>`;
-                }                        
-        
-                review.innerHTML = reviewTemplate;
+                let reviewTemplate = `<ul>`; // Start an unordered list for reviews
+
+                // Loop through each review and add it to the review list
+                for (const reviewItem of reviews) {
+                    reviewTemplate += `<li>${reviewItem.review}</li>`; // Add each review as a list item
+                }
+
+                review.innerHTML = reviewTemplate; // Insert the reviews into the review element
             }
-            
+
+            /**
+             * Fetches and displays the reviews for a specific book by its ID.
+             * 
+             * @param {number} bookId - The ID of the book to fetch reviews for.
+             */
             function getReviews(bookId){
-                fetch("http://localhost:8080/reviews/" + bookId)
-                        .then(data => data.json())
-                        .then(data => showReviews(data));
+                fetch("http://localhost:8080/reviews/" + bookId) // Make a request to the backend to fetch reviews
+                    .then(data => data.json()) // Parse the response to JSON
+                    .then(data => showReviews(data)); // Pass the review data to the showReviews function
             }
-            
+
+            /**
+             * Displays both the book details and its reviews when a book is selected.
+             * 
+             * @param {number} bookId - The ID of the book to display details and reviews for.
+             */
             function showBookReviews(bookId){
-                hr.style.display = "block";
-                getBookDetail(bookId);
-                getReviews(bookId);
+                hr.style.display = "block"; // Make the horizontal line visible
+                getBookDetail(bookId); // Fetch and display the book details
+                getReviews(bookId); // Fetch and display the reviews for the book
             }
         </script>
     </body>

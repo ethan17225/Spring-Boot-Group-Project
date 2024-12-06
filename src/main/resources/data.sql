@@ -1,11 +1,8 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/SQLTemplate.sql to edit this template
- */
 /**
- * Author:  theha
- * Created: Dec 2, 2024
+ * @author The Hai Nguyen - December 06, 2024
  */
+
+--Insert book data for testing
 INSERT INTO BOOK (title, authors) VALUES
     ('Caraval', 'S. Garber'),
     ('Sapiens', 'Yuval Noah Harari'),
@@ -13,6 +10,7 @@ INSERT INTO BOOK (title, authors) VALUES
     ('Inferno', 'Dante Alighieri'),
     ('Dracula', 'Bram Stoker');
 
+--Insert review data for testing
 INSERT INTO REVIEW (book_id, review) VALUES
     (1, 'The book is great'),
     (1, 'Excellent'),
@@ -20,5 +18,6 @@ INSERT INTO REVIEW (book_id, review) VALUES
     (2, 'Very nice book'),
     (3, 'Must read!!!');
 
+--Add 1 user in the database
 INSERT INTO MY_USER_DETAILS (username, password, roles) VALUES
     ('Jane', 'pass', 'USER');

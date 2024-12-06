@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.java.BookReviews.repo;
 
 import com.java.BookReviews.models.Book;
 import org.springframework.data.repository.CrudRepository;
 
 /**
+ * Repository interface for managing Book entities.
  *
- * @author theha
+ * @author The Hai Nguyen - December 06, 2024
  */
 public interface BookRepository extends CrudRepository<Book, Integer> {
     
