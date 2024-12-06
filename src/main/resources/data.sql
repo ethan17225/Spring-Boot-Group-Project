@@ -21,4 +21,4 @@ INSERT INTO REVIEW (book_id, review) VALUES
     (3, 'Must read!!!');
 
 INSERT INTO MY_USER_DETAILS (username, password, roles) VALUES
-    ('Jane', '$2a$10$aF4tbVzIJ9i42Ng8Oc7dP.e21IONjXvC25SB5.Sek3/gp6lGDLNu2', 'USER');
+    ('Jane', 'pass', 'USER');

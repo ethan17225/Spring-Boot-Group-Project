@@ -40,12 +40,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
     throws Exception {
         http.authorizeHttpRequests(auth -> auth
-//        .requestMatchers("/newBook").hasRole("USER")
-//        .requestMatchers("/newReview").hasRole("USER")
-        .requestMatchers("/newBook/**").permitAll() //Need to be removed after testing
+        .requestMatchers("/newBook").authenticated()
         .requestMatchers("/newReview/**").permitAll() //Need to be removed after testing
         .requestMatchers("/").permitAll()
         .requestMatchers("/books/**").permitAll()
+        .requestMatchers("/reviews/**").permitAll()
+        .requestMatchers("/addReview/**").permitAll()
         .requestMatchers(PathRequest.toH2Console()).permitAll()
         .anyRequest().authenticated())
         .httpBasic(withDefaults())
