@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author theha
  */
 @Controller
-public class BookController {
+public class BookReviewController {
     @Autowired
     BookRepository bookRepo;
     
@@ -51,6 +51,7 @@ public class BookController {
     @RequestMapping("/newReview/{bookId}")
     public String newReview(Model model, @PathVariable int bookId) {
         model.addAttribute("bookId", bookId);
+        model.addAttribute("book", bookRepo.findById(bookId).get());
         
         return "addReview";
     }

@@ -9,11 +9,10 @@
 
 <form th:action="@{/addBook}" method="GET" th:object="${book}">
     <label for="title">Title: </label>
-    <input id="title" type="text" name="title" th:field="*{title}">
-        <br>
+    <input id="title" type="text" name="title" th:field="*{title}"><br>        
     <label for="authors">Author: </label>
     <input id="authors" type="text" name="authors" th:field="*{authors}"><br>
-    <input type="submit" value="Save" style='width:100px; margin-top: 15px;'>
+    <input type="submit" value="Add Book" style='width:100px; margin-top: 15px;'>
 </form>
 </body>
 </html>
